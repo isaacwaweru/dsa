@@ -87,6 +87,42 @@ class BinarySearchTree {
     }
     return data;
   }
+
+  DFSPreOrder() {
+    const data = [];
+
+    function traverse(node) {
+      data.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  DFSPostOrder() {
+    const data = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  DFSInOrder() {
+    const data = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return data;
+  }
 }
 
 //      10
@@ -105,4 +141,8 @@ tree.insert(7);
 // console.log(tree.contains(10));
 // console.log(tree.find(50));
 
-console.log(tree.BFS());
+// console.log(tree.BFS());
+
+console.log(tree.DFSPreOrder());
+console.log(tree.DFSPostOrder());
+console.log(tree.DFSInOrder());
